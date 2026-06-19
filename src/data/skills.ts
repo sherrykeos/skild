@@ -1,0 +1,67 @@
+export const Skills: SkillRecord[] = [
+	{
+		id: "skill_001",
+		title: "Research Brief Builder",
+		slug: "research-brief-builder",
+		description:
+			"Turns scattered notes, links, and transcripts into a concise research brief with sources, open questions, and recommended next steps.",
+		category: "Research",
+		tags: ["summarization", "sources", "analysis"],
+		installCommand: "skilld install research-brief-builder",
+		createdAt: "2026-06-12T09:30:00.000Z",
+		authorClerkId: "user_research_ops",
+		authorEmail: "research@example.com",
+	},
+	{
+		id: "skill_002",
+		title: "PR Review Assistant",
+		slug: "pr-review-assistant",
+		description:
+			"Reviews pull requests for risky changes, missing tests, accessibility regressions, and inconsistent project patterns.",
+		category: "Engineering",
+		tags: ["code-review", "testing", "typescript"],
+		installCommand: "skilld install pr-review-assistant",
+		createdAt: "2026-06-13T14:45:00.000Z",
+		authorClerkId: "user_dev_quality",
+		authorEmail: "devquality@example.com",
+	},
+	{
+		id: "skill_003",
+		title: "Launch Checklist Writer",
+		slug: "launch-checklist-writer",
+		description:
+			"Creates launch checklists for product releases, including rollout stages, owner assignments, metrics, and rollback triggers.",
+		category: "Product",
+		tags: ["launch", "planning", "operations"],
+		installCommand: "skilld install launch-checklist-writer",
+		createdAt: "2026-06-14T11:15:00.000Z",
+		authorClerkId: "user_product_ops",
+		authorEmail: "product@example.com",
+	},
+	{
+		id: "skill_004",
+		title: "Support Triage Router",
+		slug: "support-triage-router",
+		description:
+			"Classifies support requests by urgency, customer impact, product area, and suggested internal escalation path.",
+		category: "Support",
+		tags: ["triage", "classification", "customer-success"],
+		installCommand: "skilld install support-triage-router",
+		createdAt: "2026-06-15T16:20:00.000Z",
+		authorClerkId: "user_support_flow",
+		authorEmail: "support@example.com",
+	},
+	{
+		id: "skill_005",
+		title: "Content Style Normalizer",
+		slug: "content-style-normalizer",
+		description:
+			"Rewrites drafts to match a brand voice, preserving facts while tightening structure, tone, and terminology.",
+		category: "Writing",
+		tags: ["editing", "brand-voice", "content"],
+		installCommand: "skilld install content-style-normalizer",
+		createdAt: "2026-06-16T08:10:00.000Z",
+		authorClerkId: "user_content_systems",
+		authorEmail: "content@example.com",
+	},
+];
