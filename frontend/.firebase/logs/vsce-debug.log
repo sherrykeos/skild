@@ -1,0 +1,295 @@
+[debug] [2026-06-19T22:22:19.260Z] [Firebase Plugin] Activating Firebase extension.
+[debug] [2026-06-19T22:22:20.914Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-06-19T22:22:20.916Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-06-19T22:22:20.917Z] > authorizing via signed-in user (mrcuriositer@gmail.com)
+[debug] [2026-06-19T22:22:20.920Z] Checked if tokens are valid: true, expires at: 1781911153914
+[debug] [2026-06-19T22:22:20.920Z] Checked if tokens are valid: true, expires at: 1781911153914
+[debug] [2026-06-19T22:22:20.920Z] [Firebase Plugin] User found:  mrcuriositer@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2026-06-19T22:22:20.921Z] Checked if tokens are valid: true, expires at: 1781911153914
+[debug] [2026-06-19T22:22:20.922Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-06-19T22:22:20.932Z] [Firebase Plugin] VSCode notification server listening on port 40001
+[info] [Firebase Plugin] Starting SQL Connect toolkit (version 3.4.11) on port 50001
+[info] i  dataconnect: downloading dataconnect-emulator-3.4.11.exe... {"metadata":{"emulator":{"name":"dataconnect"},"message":"downloading dataconnect-emulator-3.4.11.exe..."}}
+[debug] [2026-06-19T22:22:21.274Z] >>> [apiv2][query] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-amd64-v3.4.11 
+[debug] [2026-06-19T22:22:21.772Z] <<< [apiv2][status] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-amd64-v3.4.11 200
+[debug] [2026-06-19T22:22:21.773Z] <<< [apiv2][body] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-amd64-v3.4.11 [stream]
+[debug] [2026-06-19T22:22:22.092Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-06-19T22:22:22.093Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  dataconnect: Removing outdated emulator files: dataconnect-emulator-3.3.1.exe {"metadata":{"emulator":{"name":"dataconnect"},"message":"Removing outdated emulator files: dataconnect-emulator-3.3.1.exe"}}
+[debug] [2026-06-19T22:23:26.214Z] I0620 03:53:26.208627   15848 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service b709] UpdateResources(): done
+Main schema: sources: schema\schema.gql [0B] 
+Connector "example": sources: 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0620 03:53:26.208627   15848 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service b709] UpdateResources(): done\nMain schema: sources: schema\\schema.gql [0B] \nConnector \"example\": sources: \n"}}
+[debug] [2026-06-19T22:23:26.215Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2026-06-19T22:23:26.215Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2026-06-19T22:23:26.216Z] Starting SQL Connect Emulator with command {"binary":"C:\\Users\\MRcur\\.cache\\firebase\\emulators\\dataconnect-emulator-3.4.11.exe","args":["--logtostderr","-v=2","dev","--listen=localhost:50001","--config_dir=d:\\coding\\web dev\\project\\sklld - tanstack project\\skilld\\dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting SQL Connect Emulator with command {\"binary\":\"C:\\\\Users\\\\MRcur\\\\.cache\\\\firebase\\\\emulators\\\\dataconnect-emulator-3.4.11.exe\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50001\",\"--config_dir=d:\\\\coding\\\\web dev\\\\project\\\\sklld - tanstack project\\\\skilld\\\\dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: SQL Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"SQL Connect Emulator logging to \u001b[1mdataconnect-debug.log\u001b[22m"}}
+[debug] [2026-06-19T22:23:26.288Z] I0620 03:53:26.251713   19904 load.go:31] Reloading schema and connectors...
+I0620 03:53:26.256895   19904 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service eb1b] UpdateResources(): done
+Main schema: sources: schema\schema.gql [0B] 
+Connector "example": sources: 
+E0620 03:53:26.261480   19904 load.go:95] Errors generating SDK: [connector "example"]: invalid Data Connect Connector no query found in connector
+I0620 03:53:26.263672   19904 collector.go:107] schema extensions wrote into "d:\\coding\\web dev\\project\\sklld - tanstack project\\skilld\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [84995B] 
+I0620 03:53:26.263672   19904 load.go:109] Finished reloading
+I0620 03:53:26.283939   19904 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0620 03:53:26.251713   19904 load.go:31] Reloading schema and connectors...\nI0620 03:53:26.256895   19904 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service eb1b] UpdateResources(): done\nMain schema: sources: schema\\schema.gql [0B] \nConnector \"example\": sources: \nE0620 03:53:26.261480   19904 load.go:95] Errors generating SDK: [connector \"example\"]: invalid Data Connect Connector no query found in connector\nI0620 03:53:26.263672   19904 collector.go:107] schema extensions wrote into \"d:\\\\coding\\\\web dev\\\\project\\\\sklld - tanstack project\\\\skilld\\\\dataconnect\\\\.dataconnect\\\\schema\"\nGenerated sources: prelude.gql [84995B] \nI0620 03:53:26.263672   19904 load.go:109] Finished reloading\nI0620 03:53:26.283939   19904 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001\n"}}
+[debug] [2026-06-19T22:23:26.617Z] I0620 03:53:26.607454   19904 engine.go:209] [projects/emulator/locations/emulator/services/skild-86cb1-service eb1b] ExecuteGraphqlRead query IntrospectionQuery: succeeded. 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0620 03:53:26.607454   19904 engine.go:209] [projects/emulator/locations/emulator/services/skild-86cb1-service eb1b] ExecuteGraphqlRead query IntrospectionQuery: succeeded. \n"}}
+[info] [Firebase Plugin] Stopping SQL Connect toolkit
+[warn] !  SQL Connect Emulator has exited upon receiving signal: SIGINT 
+[debug] [2026-06-21T19:05:16.114Z] [Firebase Plugin] Activating Firebase extension.
+[debug] [2026-06-21T19:05:19.611Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-06-21T19:05:19.619Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-06-21T19:05:19.620Z] > authorizing via signed-in user (mrcuriositer@gmail.com)
+[debug] [2026-06-21T19:05:19.622Z] Checked if tokens are valid: true, expires at: 1782070146882
+[debug] [2026-06-21T19:05:19.623Z] Checked if tokens are valid: true, expires at: 1782070146882
+[debug] [2026-06-21T19:05:19.623Z] [Firebase Plugin] User found:  mrcuriositer@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2026-06-21T19:05:19.624Z] Checked if tokens are valid: true, expires at: 1782070146882
+[debug] [2026-06-21T19:05:19.625Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-06-21T19:05:19.634Z] [Firebase Plugin] VSCode notification server listening on port 40001
+[info] [Firebase Plugin] Starting SQL Connect toolkit (version 3.4.11) on port 50001
+[debug] [2026-06-21T19:05:26.047Z] I0622 00:35:26.042360    8952 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 3521] UpdateResources(): done
+Main schema: sources: schema\schema.gql [0B] 
+Connector "example": sources: 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0622 00:35:26.042360    8952 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 3521] UpdateResources(): done\nMain schema: sources: schema\\schema.gql [0B] \nConnector \"example\": sources: \n"}}
+[debug] [2026-06-21T19:05:26.047Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2026-06-21T19:05:26.047Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2026-06-21T19:05:26.048Z] Starting SQL Connect Emulator with command {"binary":"C:\\Users\\MRcur\\.cache\\firebase\\emulators\\dataconnect-emulator-3.4.11.exe","args":["--logtostderr","-v=2","dev","--listen=localhost:50001","--config_dir=d:\\coding\\web dev\\project\\sklld - tanstack project\\skilld\\dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting SQL Connect Emulator with command {\"binary\":\"C:\\\\Users\\\\MRcur\\\\.cache\\\\firebase\\\\emulators\\\\dataconnect-emulator-3.4.11.exe\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50001\",\"--config_dir=d:\\\\coding\\\\web dev\\\\project\\\\sklld - tanstack project\\\\skilld\\\\dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: SQL Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"SQL Connect Emulator logging to \u001b[1mdataconnect-debug.log\u001b[22m"}}
+[debug] [2026-06-21T19:05:26.605Z] I0622 00:35:26.076843   16320 load.go:31] Reloading schema and connectors...
+I0622 00:35:26.080751   16320 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 9cb1] UpdateResources(): done
+Main schema: sources: schema\schema.gql [0B] 
+Connector "example": sources: 
+E0622 00:35:26.083629   16320 load.go:95] Errors generating SDK: [connector "example"]: invalid Data Connect Connector no query found in connector
+I0622 00:35:26.084210   16320 collector.go:107] schema extensions wrote into "d:\\coding\\web dev\\project\\sklld - tanstack project\\skilld\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [84995B] 
+I0622 00:35:26.084210   16320 load.go:109] Finished reloading
+I0622 00:35:26.094253   16320 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0622 00:35:26.076843   16320 load.go:31] Reloading schema and connectors...\nI0622 00:35:26.080751   16320 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 9cb1] UpdateResources(): done\nMain schema: sources: schema\\schema.gql [0B] \nConnector \"example\": sources: \nE0622 00:35:26.083629   16320 load.go:95] Errors generating SDK: [connector \"example\"]: invalid Data Connect Connector no query found in connector\nI0622 00:35:26.084210   16320 collector.go:107] schema extensions wrote into \"d:\\\\coding\\\\web dev\\\\project\\\\sklld - tanstack project\\\\skilld\\\\dataconnect\\\\.dataconnect\\\\schema\"\nGenerated sources: prelude.gql [84995B] \nI0622 00:35:26.084210   16320 load.go:109] Finished reloading\nI0622 00:35:26.094253   16320 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001\n"}}
+[error] [Firebase Plugin]request to http://localhost:50001/v1/projects/p/locations/l/services/skild-86cb1-service:executeGraphqlRead failed, reason:  {"type":"system","errno":"ETIMEDOUT","code":"ETIMEDOUT","vslsStack":[{},{},{},{},{},{},{},{},{},{}]}
+[error] [Firebase Plugin] error:  {}
+[debug] [2026-06-21T19:05:28.473Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-06-21T19:05:28.473Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2026-06-29T06:26:40.467Z] [Firebase Plugin] Activating Firebase extension.
+[info] [Firebase Plugin] Unable to check firebase-tools installation: TypeError: fetch failed
+[debug] [2026-06-29T06:26:41.042Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-06-29T06:26:41.044Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-06-29T06:26:41.044Z] > authorizing via signed-in user (mrcuriositer@gmail.com)
+[debug] [2026-06-29T06:26:41.047Z] Checked if tokens are valid: false, expires at: 1782640783510
+[debug] [2026-06-29T06:26:41.047Z] Checked if tokens are valid: false, expires at: 1782640783510
+[debug] [2026-06-29T06:26:41.047Z] > refreshing access token with scopes: []
+[debug] [2026-06-29T06:26:41.049Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-06-29T06:26:41.049Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-06-29T06:26:41.057Z] [Firebase Plugin] VSCode notification server listening on port 40001
+[debug] [2026-06-29T06:26:41.259Z] *** [apiv2] error from fetch(https://www.googleapis.com/oauth2/v3/token, {"headers":{},"method":"POST","body":{"_overheadLength":545,"_valueLength":212,"_valuesToMeasure":[],"writable":false,"readable":true,"dataSize":0,"maxDataSize":2097152,"pauseStreams":true,"_released":true,"_streams":[],"_currentStream":null,"_insideLoop":false,"_pendingNext":false,"_boundary":"--------------------------aa805a10a0c90fb02f61908a","_events":{},"_eventsCount":1}}): FetchError: request to https://www.googleapis.com/oauth2/v3/token failed, reason: getaddrinfo ENOTFOUND www.googleapis.com
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[error] [Firebase Plugin] requireAuth error: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[info] [Firebase Plugin] Starting SQL Connect toolkit (version 3.4.11) on port 50001
+[debug] [2026-06-29T06:26:43.021Z] I0629 11:56:43.011809    9756 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 9acc] UpdateResources(): done
+Main schema: sources: schema\schema.gql [0B] 
+Connector "example": sources: 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0629 11:56:43.011809    9756 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 9acc] UpdateResources(): done\nMain schema: sources: schema\\schema.gql [0B] \nConnector \"example\": sources: \n"}}
+[debug] [2026-06-29T06:26:43.022Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2026-06-29T06:26:43.022Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2026-06-29T06:26:43.022Z] Starting SQL Connect Emulator with command {"binary":"C:\\Users\\MRcur\\.cache\\firebase\\emulators\\dataconnect-emulator-3.4.11.exe","args":["--logtostderr","-v=2","dev","--listen=localhost:50001","--config_dir=d:\\coding\\web dev\\project\\sklld - tanstack project\\skilld\\dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting SQL Connect Emulator with command {\"binary\":\"C:\\\\Users\\\\MRcur\\\\.cache\\\\firebase\\\\emulators\\\\dataconnect-emulator-3.4.11.exe\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50001\",\"--config_dir=d:\\\\coding\\\\web dev\\\\project\\\\sklld - tanstack project\\\\skilld\\\\dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: SQL Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"SQL Connect Emulator logging to \u001b[1mdataconnect-debug.log\u001b[22m"}}
+[debug] [2026-06-29T06:26:43.099Z] I0629 11:56:43.050495   17944 load.go:31] Reloading schema and connectors...
+I0629 11:56:43.053327   17944 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service bc76] UpdateResources(): done
+Main schema: sources: schema\schema.gql [0B] 
+Connector "example": sources: 
+E0629 11:56:43.056845   17944 load.go:95] Errors generating SDK: [connector "example"]: invalid Data Connect Connector no query found in connector
+I0629 11:56:43.056845   17944 collector.go:107] schema extensions wrote into "d:\\coding\\web dev\\project\\sklld - tanstack project\\skilld\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [84995B] 
+I0629 11:56:43.057455   17944 load.go:109] Finished reloading
+I0629 11:56:43.068766   17944 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0629 11:56:43.050495   17944 load.go:31] Reloading schema and connectors...\nI0629 11:56:43.053327   17944 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service bc76] UpdateResources(): done\nMain schema: sources: schema\\schema.gql [0B] \nConnector \"example\": sources: \nE0629 11:56:43.056845   17944 load.go:95] Errors generating SDK: [connector \"example\"]: invalid Data Connect Connector no query found in connector\nI0629 11:56:43.056845   17944 collector.go:107] schema extensions wrote into \"d:\\\\coding\\\\web dev\\\\project\\\\sklld - tanstack project\\\\skilld\\\\dataconnect\\\\.dataconnect\\\\schema\"\nGenerated sources: prelude.gql [84995B] \nI0629 11:56:43.057455   17944 load.go:109] Finished reloading\nI0629 11:56:43.068766   17944 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001\n"}}
+[debug] [2026-06-29T06:26:44.241Z] I0629 11:56:43.364995   17944 engine.go:209] [projects/emulator/locations/emulator/services/skild-86cb1-service bc76] ExecuteGraphqlRead query IntrospectionQuery: succeeded. 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0629 11:56:43.364995   17944 engine.go:209] [projects/emulator/locations/emulator/services/skild-86cb1-service bc76] ExecuteGraphqlRead query IntrospectionQuery: succeeded. \n"}}
+[info] [Firebase Plugin] Stopping SQL Connect toolkit
+[warn] !  SQL Connect Emulator has exited upon receiving signal: SIGINT 
+[debug] [2026-06-29T17:12:16.661Z] [Firebase Plugin] Activating Firebase extension.
+[debug] [2026-06-29T17:12:23.723Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-06-29T17:12:23.726Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-06-29T17:12:23.727Z] > authorizing via signed-in user (mrcuriositer@gmail.com)
+[debug] [2026-06-29T17:12:23.731Z] Checked if tokens are valid: false, expires at: 1782640783510
+[debug] [2026-06-29T17:12:23.731Z] Checked if tokens are valid: false, expires at: 1782640783510
+[debug] [2026-06-29T17:12:23.731Z] > refreshing access token with scopes: []
+[debug] [2026-06-29T17:12:23.733Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-06-29T17:12:23.733Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-06-29T17:12:23.745Z] [Firebase Plugin] VSCode notification server listening on port 40001
+[info] [Firebase Plugin] Starting SQL Connect toolkit (version 3.4.11) on port 50001
+[debug] [2026-06-29T17:12:51.269Z] I0629 22:42:51.264935    6476 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 1f00] UpdateResources(): done
+Main schema: sources: schema\schema.gql [0B] 
+Connector "example": sources: 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0629 22:42:51.264935    6476 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 1f00] UpdateResources(): done\nMain schema: sources: schema\\schema.gql [0B] \nConnector \"example\": sources: \n"}}
+[debug] [2026-06-29T17:12:51.270Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2026-06-29T17:12:51.270Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2026-06-29T17:12:51.270Z] Starting SQL Connect Emulator with command {"binary":"C:\\Users\\MRcur\\.cache\\firebase\\emulators\\dataconnect-emulator-3.4.11.exe","args":["--logtostderr","-v=2","dev","--listen=localhost:50001","--config_dir=d:\\coding\\web dev\\project\\sklld - tanstack project\\skilld\\dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting SQL Connect Emulator with command {\"binary\":\"C:\\\\Users\\\\MRcur\\\\.cache\\\\firebase\\\\emulators\\\\dataconnect-emulator-3.4.11.exe\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50001\",\"--config_dir=d:\\\\coding\\\\web dev\\\\project\\\\sklld - tanstack project\\\\skilld\\\\dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: SQL Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"SQL Connect Emulator logging to \u001b[1mdataconnect-debug.log\u001b[22m"}}
+[debug] [2026-06-29T17:12:52.890Z] I0629 22:42:51.307223   12104 load.go:31] Reloading schema and connectors...
+I0629 22:42:51.317366   12104 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 267e] UpdateResources(): done
+Main schema: sources: schema\schema.gql [0B] 
+Connector "example": sources: 
+E0629 22:42:51.323756   12104 load.go:95] Errors generating SDK: [connector "example"]: invalid Data Connect Connector no query found in connector
+I0629 22:42:51.324470   12104 collector.go:107] schema extensions wrote into "d:\\coding\\web dev\\project\\sklld - tanstack project\\skilld\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [84995B] 
+I0629 22:42:51.324470   12104 load.go:109] Finished reloading
+I0629 22:42:51.339650   12104 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0629 22:42:51.307223   12104 load.go:31] Reloading schema and connectors...\nI0629 22:42:51.317366   12104 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 267e] UpdateResources(): done\nMain schema: sources: schema\\schema.gql [0B] \nConnector \"example\": sources: \nE0629 22:42:51.323756   12104 load.go:95] Errors generating SDK: [connector \"example\"]: invalid Data Connect Connector no query found in connector\nI0629 22:42:51.324470   12104 collector.go:107] schema extensions wrote into \"d:\\\\coding\\\\web dev\\\\project\\\\sklld - tanstack project\\\\skilld\\\\dataconnect\\\\.dataconnect\\\\schema\"\nGenerated sources: prelude.gql [84995B] \nI0629 22:42:51.324470   12104 load.go:109] Finished reloading\nI0629 22:42:51.339650   12104 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001\n"}}
+[debug] [2026-06-29T17:12:54.867Z] I0629 22:42:54.785166   12104 engine.go:209] [projects/emulator/locations/emulator/services/skild-86cb1-service 267e] ExecuteGraphqlRead query IntrospectionQuery: succeeded. 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0629 22:42:54.785166   12104 engine.go:209] [projects/emulator/locations/emulator/services/skild-86cb1-service 267e] ExecuteGraphqlRead query IntrospectionQuery: succeeded. \n"}}
+[debug] [2026-06-29T17:12:55.373Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-06-29T17:12:55.373Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-06-29T17:12:55.396Z] [Firebase Plugin] User found:  mrcuriositer@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2026-06-29T17:12:55.397Z] Checked if tokens are valid: true, expires at: 1782756774374
+[debug] [2026-06-29T17:12:55.398Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-06-29T17:12:56.416Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-06-29T17:12:56.416Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] [Firebase Plugin] Stopping SQL Connect toolkit
+[warn] !  SQL Connect Emulator has exited upon receiving signal: SIGINT 
+[debug] [2026-07-24T09:34:55.075Z] [Firebase Plugin] Activating Firebase extension.
+[info] [Firebase Plugin] Unable to check firebase-tools installation: TypeError: fetch failed
+[debug] [2026-07-24T09:35:14.274Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-07-24T09:35:14.276Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-07-24T09:35:14.277Z] > authorizing via signed-in user (mrcuriositer@gmail.com)
+[debug] [2026-07-24T09:35:14.281Z] Checked if tokens are valid: false, expires at: 1784843506341
+[debug] [2026-07-24T09:35:14.284Z] Checked if tokens are valid: false, expires at: 1784843506341
+[debug] [2026-07-24T09:35:14.286Z] > refreshing access token with scopes: []
+[debug] [2026-07-24T09:35:14.290Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-07-24T09:35:14.303Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-07-24T09:35:14.328Z] [Firebase Plugin] VSCode notification server listening on port 40001
+[info] [Firebase Plugin] Starting SQL Connect toolkit (version 3.4.16) on port 50001
+[info] i  dataconnect: downloading dataconnect-emulator-3.4.16.exe... {"metadata":{"emulator":{"name":"dataconnect"},"message":"downloading dataconnect-emulator-3.4.16.exe..."}}
+[debug] [2026-07-24T09:35:17.318Z] >>> [apiv2][query] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-amd64-v3.4.16 
+[debug] [2026-07-24T09:35:18.580Z] <<< [apiv2][status] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-amd64-v3.4.16 200
+[debug] [2026-07-24T09:35:18.580Z] <<< [apiv2][body] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-amd64-v3.4.16 [stream]
+[debug] [2026-07-24T09:35:21.419Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-07-24T09:35:21.420Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-07-24T09:35:21.487Z] [Firebase Plugin] User found:  mrcuriositer@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2026-07-24T09:35:21.504Z] Checked if tokens are valid: true, expires at: 1784889320421
+[debug] [2026-07-24T09:35:21.514Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-07-24T09:35:23.034Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-07-24T09:35:23.035Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  dataconnect: Removing outdated emulator files: dataconnect-emulator-3.4.11.exe {"metadata":{"emulator":{"name":"dataconnect"},"message":"Removing outdated emulator files: dataconnect-emulator-3.4.11.exe"}}
+[debug] [2026-07-24T09:35:38.041Z] I0724 15:05:38.028905    3144 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service f750] UpdateResources(): done
+Main schema: sources: schema\schema.gql [0B] 
+Connector "example": sources: 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0724 15:05:38.028905    3144 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service f750] UpdateResources(): done\nMain schema: sources: schema\\schema.gql [0B] \nConnector \"example\": sources: \n"}}
+[debug] [2026-07-24T09:35:38.043Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2026-07-24T09:35:38.044Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2026-07-24T09:35:38.044Z] Starting SQL Connect Emulator with command {"binary":"C:\\Users\\MRcur\\.cache\\firebase\\emulators\\dataconnect-emulator-3.4.16.exe","args":["--logtostderr","-v=2","dev","--listen=localhost:50001","--config_dir=d:\\coding\\web dev\\WD-PROJECTS\\sklld - tanstack project\\skilld\\dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting SQL Connect Emulator with command {\"binary\":\"C:\\\\Users\\\\MRcur\\\\.cache\\\\firebase\\\\emulators\\\\dataconnect-emulator-3.4.16.exe\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50001\",\"--config_dir=d:\\\\coding\\\\web dev\\\\WD-PROJECTS\\\\sklld - tanstack project\\\\skilld\\\\dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: SQL Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"SQL Connect Emulator logging to \u001b[1mdataconnect-debug.log\u001b[22m"}}
+[debug] [2026-07-24T09:35:38.124Z] I0724 15:05:38.109409    9388 load.go:31] Reloading schema and connectors...
+I0724 15:05:38.116651    9388 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 660e] UpdateResources(): done
+Main schema: sources: schema\schema.gql [0B] 
+Connector "example": sources: 
+E0724 15:05:38.119774    9388 load.go:95] Errors generating SDK: [connector "example"]: invalid Data Connect Connector no query found in connector
+I0724 15:05:38.119774    9388 collector.go:107] schema extensions wrote into "d:\\coding\\web dev\\WD-PROJECTS\\sklld - tanstack project\\skilld\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [84995B] 
+I0724 15:05:38.121313    9388 load.go:109] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0724 15:05:38.109409    9388 load.go:31] Reloading schema and connectors...\nI0724 15:05:38.116651    9388 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 660e] UpdateResources(): done\nMain schema: sources: schema\\schema.gql [0B] \nConnector \"example\": sources: \nE0724 15:05:38.119774    9388 load.go:95] Errors generating SDK: [connector \"example\"]: invalid Data Connect Connector no query found in connector\nI0724 15:05:38.119774    9388 collector.go:107] schema extensions wrote into \"d:\\\\coding\\\\web dev\\\\WD-PROJECTS\\\\sklld - tanstack project\\\\skilld\\\\dataconnect\\\\.dataconnect\\\\schema\"\nGenerated sources: prelude.gql [84995B] \nI0724 15:05:38.121313    9388 load.go:109] Finished reloading\n"}}
+[debug] [2026-07-24T09:35:38.189Z] I0724 15:05:38.133549    9388 dev.go:101] Listening on address (HTTP + gRPC): 127.0.0.1:50001
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0724 15:05:38.133549    9388 dev.go:101] Listening on address (HTTP + gRPC): 127.0.0.1:50001\n"}}
+[debug] [2026-07-24T09:35:38.750Z] I0724 15:05:38.695680    9388 engine.go:209] [projects/emulator/locations/emulator/services/skild-86cb1-service 660e] ExecuteGraphqlRead query IntrospectionQuery: succeeded. 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0724 15:05:38.695680    9388 engine.go:209] [projects/emulator/locations/emulator/services/skild-86cb1-service 660e] ExecuteGraphqlRead query IntrospectionQuery: succeeded. \n"}}
+[debug] [2026-07-25T05:48:05.784Z] [Firebase Plugin] Activating Firebase extension.
+[info] [Firebase Plugin] Unable to check firebase-tools installation: TypeError: fetch failed
+[debug] [2026-07-25T05:48:26.740Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-07-25T05:48:26.743Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-07-25T05:48:26.744Z] > authorizing via signed-in user (mrcuriositer@gmail.com)
+[debug] [2026-07-25T05:48:26.747Z] Checked if tokens are valid: false, expires at: 1784889320421
+[debug] [2026-07-25T05:48:26.748Z] Checked if tokens are valid: false, expires at: 1784889320421
+[debug] [2026-07-25T05:48:26.749Z] > refreshing access token with scopes: []
+[debug] [2026-07-25T05:48:26.750Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-07-25T05:48:26.751Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-07-25T05:48:26.768Z] [Firebase Plugin] VSCode notification server listening on port 40001
+[debug] [2026-07-25T05:48:50.331Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-07-25T05:48:50.332Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-07-25T05:48:50.403Z] [Firebase Plugin] User found:  mrcuriositer@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2026-07-25T05:48:50.406Z] Checked if tokens are valid: true, expires at: 1784962129333
+[debug] [2026-07-25T05:48:50.407Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[info] [Firebase Plugin] Starting SQL Connect toolkit (version 3.4.16) on port 50001
+[debug] [2026-07-25T05:49:38.435Z] I0725 11:19:38.427191    9908 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 6b7b] UpdateResources(): done
+Main schema: sources: schema\schema.gql [0B] 
+Connector "example": sources: 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0725 11:19:38.427191    9908 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 6b7b] UpdateResources(): done\nMain schema: sources: schema\\schema.gql [0B] \nConnector \"example\": sources: \n"}}
+[debug] [2026-07-25T05:49:38.439Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2026-07-25T05:49:38.440Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2026-07-25T05:49:38.441Z] Starting SQL Connect Emulator with command {"binary":"C:\\Users\\MRcur\\.cache\\firebase\\emulators\\dataconnect-emulator-3.4.16.exe","args":["--logtostderr","-v=2","dev","--listen=localhost:50001","--config_dir=d:\\coding\\web dev\\WD-PROJECTS\\sklld - tanstack project\\skilld\\dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting SQL Connect Emulator with command {\"binary\":\"C:\\\\Users\\\\MRcur\\\\.cache\\\\firebase\\\\emulators\\\\dataconnect-emulator-3.4.16.exe\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50001\",\"--config_dir=d:\\\\coding\\\\web dev\\\\WD-PROJECTS\\\\sklld - tanstack project\\\\skilld\\\\dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: SQL Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"SQL Connect Emulator logging to \u001b[1mdataconnect-debug.log\u001b[22m"}}
+[debug] [2026-07-25T05:49:38.554Z] I0725 11:19:38.535017    5024 load.go:31] Reloading schema and connectors...
+I0725 11:19:38.547378    5024 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 05a0] UpdateResources(): done
+Main schema: sources: schema\schema.gql [0B] 
+Connector "example": sources: 
+E0725 11:19:38.553146    5024 load.go:95] Errors generating SDK: [connector "example"]: invalid Data Connect Connector no query found in connector
+I0725 11:19:38.553146    5024 collector.go:107] schema extensions wrote into "d:\\coding\\web dev\\WD-PROJECTS\\sklld - tanstack project\\skilld\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [84995B] 
+I0725 11:19:38.553146    5024 load.go:109] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0725 11:19:38.535017    5024 load.go:31] Reloading schema and connectors...\nI0725 11:19:38.547378    5024 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 05a0] UpdateResources(): done\nMain schema: sources: schema\\schema.gql [0B] \nConnector \"example\": sources: \nE0725 11:19:38.553146    5024 load.go:95] Errors generating SDK: [connector \"example\"]: invalid Data Connect Connector no query found in connector\nI0725 11:19:38.553146    5024 collector.go:107] schema extensions wrote into \"d:\\\\coding\\\\web dev\\\\WD-PROJECTS\\\\sklld - tanstack project\\\\skilld\\\\dataconnect\\\\.dataconnect\\\\schema\"\nGenerated sources: prelude.gql [84995B] \nI0725 11:19:38.553146    5024 load.go:109] Finished reloading\n"}}
+[debug] [2026-07-25T05:49:38.585Z] I0725 11:19:38.569597    5024 dev.go:101] Listening on address (HTTP + gRPC): 127.0.0.1:50001
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0725 11:19:38.569597    5024 dev.go:101] Listening on address (HTTP + gRPC): 127.0.0.1:50001\n"}}
+[debug] [2026-07-25T05:49:38.831Z] I0725 11:19:38.829905    5024 engine.go:209] [projects/emulator/locations/emulator/services/skild-86cb1-service 05a0] ExecuteGraphqlRead query IntrospectionQuery: succeeded. 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0725 11:19:38.829905    5024 engine.go:209] [projects/emulator/locations/emulator/services/skild-86cb1-service 05a0] ExecuteGraphqlRead query IntrospectionQuery: succeeded. \n"}}
+[debug] [2026-07-25T05:49:50.637Z] *** [apiv2] error from fetch(https://firebase.googleapis.com/v1beta1/projects?pageSize=1000, {"headers":{},"method":"GET","signal":{}}): AbortError: This operation was aborted
+[debug] [2026-07-25T05:49:50.638Z] Timeout reached making request to https://firebase.googleapis.com/v1beta1/projects?pageSize=1000
+[debug] [2026-07-26T08:34:15.760Z] [Firebase Plugin] Activating Firebase extension.
+[debug] [2026-07-26T08:34:24.212Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-07-26T08:34:24.217Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-07-26T08:34:24.218Z] > authorizing via signed-in user (mrcuriositer@gmail.com)
+[debug] [2026-07-26T08:34:24.224Z] Checked if tokens are valid: false, expires at: 1784962129333
+[debug] [2026-07-26T08:34:24.225Z] Checked if tokens are valid: false, expires at: 1784962129333
+[debug] [2026-07-26T08:34:24.226Z] > refreshing access token with scopes: []
+[debug] [2026-07-26T08:34:24.230Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-07-26T08:34:24.231Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-07-26T08:34:24.277Z] [Firebase Plugin] VSCode notification server listening on port 40001
+[info] [Firebase Plugin] Starting SQL Connect toolkit (version 3.4.16) on port 50001
+[debug] [2026-07-26T08:34:35.674Z] I0726 14:04:35.667631   18872 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 927a] UpdateResources(): done
+Main schema: sources: schema\schema.gql [0B] 
+Connector "example": sources: 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0726 14:04:35.667631   18872 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 927a] UpdateResources(): done\nMain schema: sources: schema\\schema.gql [0B] \nConnector \"example\": sources: \n"}}
+[debug] [2026-07-26T08:34:35.676Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2026-07-26T08:34:35.676Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2026-07-26T08:34:35.676Z] Starting SQL Connect Emulator with command {"binary":"C:\\Users\\MRcur\\.cache\\firebase\\emulators\\dataconnect-emulator-3.4.16.exe","args":["--logtostderr","-v=2","dev","--listen=localhost:50001","--config_dir=d:\\coding\\web dev\\WD-PROJECTS\\sklld - tanstack project\\skilld\\dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting SQL Connect Emulator with command {\"binary\":\"C:\\\\Users\\\\MRcur\\\\.cache\\\\firebase\\\\emulators\\\\dataconnect-emulator-3.4.16.exe\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50001\",\"--config_dir=d:\\\\coding\\\\web dev\\\\WD-PROJECTS\\\\sklld - tanstack project\\\\skilld\\\\dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: SQL Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"SQL Connect Emulator logging to \u001b[1mdataconnect-debug.log\u001b[22m"}}
+[debug] [2026-07-26T08:34:37.072Z] I0726 14:04:35.711828   18968 load.go:31] Reloading schema and connectors...
+I0726 14:04:35.716334   18968 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 2005] UpdateResources(): done
+Main schema: sources: schema\schema.gql [0B] 
+Connector "example": sources: 
+E0726 14:04:35.720332   18968 load.go:95] Errors generating SDK: [connector "example"]: invalid Data Connect Connector no query found in connector
+I0726 14:04:35.720882   18968 collector.go:107] schema extensions wrote into "d:\\coding\\web dev\\WD-PROJECTS\\sklld - tanstack project\\skilld\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [84995B] 
+I0726 14:04:35.720882   18968 load.go:109] Finished reloading
+I0726 14:04:35.732618   18968 dev.go:101] Listening on address (HTTP + gRPC): 127.0.0.1:50001
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0726 14:04:35.711828   18968 load.go:31] Reloading schema and connectors...\nI0726 14:04:35.716334   18968 control.go:100] [projects/emulator/locations/emulator/services/skild-86cb1-service 2005] UpdateResources(): done\nMain schema: sources: schema\\schema.gql [0B] \nConnector \"example\": sources: \nE0726 14:04:35.720332   18968 load.go:95] Errors generating SDK: [connector \"example\"]: invalid Data Connect Connector no query found in connector\nI0726 14:04:35.720882   18968 collector.go:107] schema extensions wrote into \"d:\\\\coding\\\\web dev\\\\WD-PROJECTS\\\\sklld - tanstack project\\\\skilld\\\\dataconnect\\\\.dataconnect\\\\schema\"\nGenerated sources: prelude.gql [84995B] \nI0726 14:04:35.720882   18968 load.go:109] Finished reloading\nI0726 14:04:35.732618   18968 dev.go:101] Listening on address (HTTP + gRPC): 127.0.0.1:50001\n"}}
+[debug] [2026-07-26T08:34:39.546Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-07-26T08:34:39.547Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-07-26T08:34:39.572Z] [Firebase Plugin] User found:  mrcuriositer@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2026-07-26T08:34:39.575Z] Checked if tokens are valid: true, expires at: 1785058478547
+[debug] [2026-07-26T08:34:39.576Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-07-26T08:34:40.306Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-07-26T08:34:40.307Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] [Firebase Plugin] Stopping SQL Connect toolkit
+[warn] !  SQL Connect Emulator has exited upon receiving signal: SIGINT 
+[debug] [2026-08-08T18:24:29.001Z] [Firebase Plugin] Activating Firebase extension.
+[info] [Firebase Plugin] Unable to check firebase-tools installation: TypeError: fetch failed
+[debug] [2026-08-08T18:25:07.676Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-08-08T18:25:07.678Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-08-08T18:25:07.678Z] > authorizing via signed-in user (mrcuriositer@gmail.com)
+[debug] [2026-08-08T18:25:07.681Z] Checked if tokens are valid: false, expires at: 1786137464835
+[debug] [2026-08-08T18:25:07.681Z] Checked if tokens are valid: false, expires at: 1786137464835
+[debug] [2026-08-08T18:25:07.682Z] > refreshing access token with scopes: []
+[debug] [2026-08-08T18:25:07.684Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-08-08T18:25:07.684Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-08-08T18:25:07.698Z] [Firebase Plugin] VSCode notification server listening on port 40001
+[info] [Firebase Plugin] Stopping SQL Connect toolkit
