@@ -11,67 +11,274 @@ enum AuthProvider {
   GOOGLE
 }
 
+enum SkillStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
 model User {
-  id                String   @id @default(cuid())
+  id String @id @default(cuid())
 
-  username          String   @unique
-  email             String   @unique
+  username String @unique
+  email    String @unique
 
-  passwordHash      String?
+  passwordHash String?
 
-  provider          AuthProvider  @default(LOCAL)
-  providerId        String?  @unique
+  provider   AuthProvider @default(LOCAL)
+  providerId String?      @unique
 
-  avatar            String?
+  avatar String?
 
-  isEmailVerified   Boolean  @default(false)
-  emailVerifiedAt   DateTime?
+  isEmailVerified Boolean   @default(false)
+  emailVerifiedAt DateTime?
 
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  sessions                Session[]
-  verificationToken       VerificationToken?
-  passwordResetToken      PasswordResetToken?
+  sessions           Session[]
+  verificationToken  VerificationToken?
+  passwordResetToken PasswordResetToken?
+
+  skills      Skill[]
+  downloads   Download[]
+  reviews     Review[]
+  upvotes     Upvote[]
+  savedSkills SavedSkill[]
+  collections Collection[]
 }
 
+// Authentication Models 
 model Session {
-  id               String   @id @default(cuid())
+  id String @id @default(cuid())
 
-  refreshTokenHash String   @unique
+  refreshTokenHash String @unique
 
-  expiresAt        DateTime
+  expiresAt DateTime
 
-  lastUsedAt       DateTime @default(now())
-  createdAt        DateTime @default(now())
+  lastUsedAt DateTime @default(now())
+  createdAt  DateTime @default(now())
 
-  userId           String
-  user             User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
-
 
 model VerificationToken {
-  id          String   @id @default(cuid())
+  id String @id @default(cuid())
 
-  tokenHash   String   @unique
+  tokenHash String @unique
 
-  expiresAt   DateTime
+  expiresAt DateTime
 
-  createdAt   DateTime @default(now())
+  createdAt DateTime @default(now())
 
-  userId      String   @unique
+  userId String @unique
 
-  user         User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model PasswordResetToken {
-  id         String   @id @default(cuid())
+  id String @id @default(cuid())
 
-  tokenHash  String   @unique
+  tokenHash String @unique
 
-  expiresAt  DateTime
-  createdAt  DateTime @default(now())
+  expiresAt DateTime
+  createdAt DateTime @default(now())
 
-  userId     String   @unique
-  user       User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Skill & Management Models 
+
+model Skill {
+  id          String @id @default(cuid())
+  name        String
+  slug        String @unique
+  description String
+
+  status SkillStatus @default(DRAFT)
+
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  categoryId String?
+  category   Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+
+  version   SkillVersion[]
+  tags      SkillTag[]
+  downloads Download[]
+
+  reviews     Review[]
+  upvotes     Upvote[]
+  savedBy     SavedSkill[]
+  collections CollectionSkill[]
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  publishedAt DateTime?
+
+  @@index([authorId])
+  @@index([categoryId])
+  @@index([status])
+}
+
+model SkillVersion {
+  id String @id @default(cuid())
+
+  skillId String
+  skill   Skill  @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  version   String
+  changelog String?
+
+  files SkillFile[]
+
+  createdAt DateTime @default(now())
+
+  @@unique([skillId, version])
+  @@index([skillId])
+}
+
+model SkillFile {
+  id String @id @default(cuid())
+
+  versionId String
+  version   SkillVersion @relation(fields: [versionId], references: [id], onDelete: Cascade)
+
+  path     String
+  content  String
+  miniType String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([versionId, path])
+  @@index([versionId])
+}
+
+model Category {
+  id String @id @default(cuid())
+
+  name        String  @unique
+  slug        String  @unique
+  description String?
+
+  Skills Skill[]
+
+  createdAt DateTime @default(now())
+}
+
+model Tag {
+  id String @id @default(cuid())
+
+  name String @unique
+  slug String @unique
+
+  skills SkillTag[]
+
+  createdAt DateTime @default(now())
+}
+
+model SkillTag {
+  skillId String
+  tagId   String
+
+  skill Skill @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  tag   Tag   @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([skillId, tagId])
+  @@index([tagId])
+}
+
+model Download {
+  id String @id @default(cuid())
+
+  skillId String
+  skill   Skill  @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  version String?
+
+  createdAt DateTime @default(now())
+
+  @@index([skillId])
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model Review {
+  id String @id @default(cuid())
+
+  content String
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  skillId String
+  skill   Skill  @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([skillId])
+  @@index([userId])
+}
+
+model Upvote {
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  skillId String
+  skill   Skill  @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@id([userId, skillId])
+  @@index([skillId])
+}
+
+model SavedSkill {
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  skillId String
+  skill   Skill  @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@id([userId, skillId])
+  @@index([skillId])
+}
+
+model Collection {
+  id String @id @default(cuid())
+
+  name        String
+  description String?
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  skills CollectionSkill[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model CollectionSkill {
+  collectionId String
+  skillId      String
+
+  collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  skill      Skill      @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  addedAt DateTime @default(now())
+
+  @@id([collectionId, skillId])
+  @@index([skillId])
 }
