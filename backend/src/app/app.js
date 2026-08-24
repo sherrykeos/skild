@@ -1,8 +1,8 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import { router as authRouter, passport } from "../modules/auth/index.js";
-import errorHandler from "../modules/auth/middleware/errorHandler.js";
-import notFound from "../modules/auth/middleware/notFound.js";
+import errorHandler from "../middlewares/errorHandler.js";
+import notFound from "../middlewares/notFound.js";
 
 const app = express();
 

@@ -358,3 +358,22 @@ export async function restoreSkill(id) {
     },
   });
 }
+
+export async function findCategoryById(categoryId) {
+    return prisma.category.findUnique({
+        where: {
+            id: categoryId,
+        },
+    });
+}
+
+
+export async function findTagsByNames(names) {
+    return prisma.tag.findMany({
+        where: {
+            name: {
+                in: names,
+            },
+        },
+    });
+}
