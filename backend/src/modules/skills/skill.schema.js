@@ -111,3 +111,11 @@ export const listSkillsSchema = z.object({
     .enum(["latest", "popular", "upvotes"])
     .default("latest"),
 });
+
+export const skillSlugSchema = z.object({
+  slug: z
+      .string()
+      .trim()
+      .min(1)
+      .max(150),
+});

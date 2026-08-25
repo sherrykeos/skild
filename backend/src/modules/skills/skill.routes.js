@@ -8,6 +8,7 @@ import {
     createSkillSchema,
     updateSkillSchema,
     skillIdSchema,
+    skillSlugSchema,
 } from "./skill.schema.js";
 
 import {
@@ -148,5 +149,11 @@ router.delete(
     remove,
 );
 
+
+router.get(
+    "/public/:slug",
+    validate(skillSlugSchema, "params"),
+    getPublicBySlug,
+);
 
 export default router;
