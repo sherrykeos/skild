@@ -134,7 +134,8 @@ model SkillVersion {
 
   files SkillFile[]
 
-  createdAt DateTime @default(now())
+  createdAt   DateTime  @default(now())
+  publishedAt DateTime?
 
   @@unique([skillId, version])
   @@index([skillId])

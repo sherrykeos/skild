@@ -10,6 +10,7 @@ import {
     replaceSkillTags,
     deleteSkill,
     publishSkill,
+    publishSkillAndVersion,
     archiveSkill,
     restoreSkill,
     findCategoryById,
@@ -327,6 +328,7 @@ export async function updateSkillById(
 export async function publishSkillById(
     skillId,
     userId,
+    { versionId } = {}
 ) {
     const skill = await getSkillById(skillId);
 
@@ -346,17 +348,29 @@ export async function publishSkillById(
         );
     }
 
-    const currentVersion = skill.versions?.[0];
-
-    if (!currentVersion) {
-        throw new ApiError(
-            400,
-            "Skill does not have a version.",
-            "SKILL_VERSION_MISSING",
-        );
+    let targetVersion;
+    if (versionId) {
+        targetVersion = skill.versions?.find((v) => v.id === versionId);
+        if (!targetVersion) {
+            throw new ApiError(
+                404,
+                "Version not found or does not belong to this skill.",
+                "VERSION_NOT_FOUND",
+            );
+        }
+    } else {
+        // Use the latest unpublished version
+        targetVersion = skill.versions?.find((v) => !v.publishedAt);
+        if (!targetVersion) {
+            throw new ApiError(
+                400,
+                "No unpublished draft version found to publish.",
+                "NO_UNPUBLISHED_VERSION",
+            );
+        }
     }
 
-    const skillFile = currentVersion.files?.find(
+    const skillFile = targetVersion.files?.find(
         (file) => file.path === "SKILL.md",
     );
 
@@ -376,7 +390,8 @@ export async function publishSkillById(
         );
     }
 
-    return publishSkill(skillId);
+    const result = await publishSkillAndVersion(skillId, targetVersion.id);
+    return result.skill;
 }
 
 

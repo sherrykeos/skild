@@ -23,6 +23,9 @@ import {
     remove,
 } from "./skill.controller.js";
 
+import versionRoutes from "./versions/version.routes.js";
+
+
 
 const router = Router();
 
@@ -38,7 +41,6 @@ const router = Router();
  */
 router.get(
     "/public/:slug",
-    validate(skillSlugSchema, "params"),
     getPublicBySlug,
 );
 
@@ -150,5 +152,13 @@ router.delete(
     remove,
 );
 
+
+router.get(
+    "/public/:slug",
+    validate(skillSlugSchema, "params"),
+    getPublicBySlug,
+);
+
+router.use("/:skillId/versions", versionRoutes);
 
 export default router;

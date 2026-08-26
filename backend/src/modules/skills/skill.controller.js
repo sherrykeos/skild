@@ -158,6 +158,7 @@ const publish = asyncHandler(async (req, res) => {
     const skill = await publishSkillById(
         req.params.id,
         req.user.id,
+        req.body,
     );
 
     return res

@@ -311,6 +311,36 @@ export async function deleteSkill(id) {
 
 
 /**
+ * Publish a skill and a specific version in a single transaction.
+ */
+export async function publishSkillAndVersion(skillId, versionId) {
+  const now = new Date();
+  return prisma.$transaction(async (tx) => {
+    const version = await tx.skillVersion.update({
+      where: {
+        id: versionId,
+      },
+      data: {
+        publishedAt: now,
+      },
+    });
+
+    const skill = await tx.skill.update({
+      where: {
+        id: skillId,
+      },
+      data: {
+        status: "PUBLISHED",
+        publishedAt: now,
+      },
+    });
+
+    return { skill, version };
+  });
+}
+
+
+/**
  * Publish a skill.
  */
 export async function publishSkill(id) {
