@@ -38,6 +38,7 @@ const router = Router();
  */
 router.get(
     "/public/:slug",
+    validate(skillSlugSchema, "params"),
     getPublicBySlug,
 );
 
@@ -149,11 +150,5 @@ router.delete(
     remove,
 );
 
-
-router.get(
-    "/public/:slug",
-    validate(skillSlugSchema, "params"),
-    getPublicBySlug,
-);
 
 export default router;

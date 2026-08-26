@@ -105,7 +105,7 @@ model Skill {
   categoryId String?
   category   Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
 
-  version   SkillVersion[]
+  versions  SkillVersion[]
   tags      SkillTag[]
   downloads Download[]
 
@@ -148,7 +148,7 @@ model SkillFile {
 
   path     String
   content  String
-  miniType String?
+  mimeType String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
