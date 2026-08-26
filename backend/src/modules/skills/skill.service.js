@@ -1,7 +1,7 @@
 import ApiError from "../../utils/ApiError.js";
 
 import {
-    createSkill,
+    createSkill as createSkillRepo,
     findSkillById,
     findSkillBySlug,
     findSkillsByAuthor,
@@ -165,7 +165,7 @@ export async function createSkill(userId, input) {
 
     const initialContent = `# ${name}\n\n${description}\n`;
 
-    const skill = await createSkill({
+    const skill = await createSkillRepo({
         name,
         slug,
         description,
