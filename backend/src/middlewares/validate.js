@@ -16,7 +16,13 @@ const validate = (schema, target = "body") => {
             });
         }
 
-        req[target] = result.data;
+        try {
+            req[target] = result.data;
+        } catch {
+            if (typeof req[target] === "object" && req[target] !== null) {
+                Object.assign(req[target], result.data);
+            }
+        }
 
         next();
     };
