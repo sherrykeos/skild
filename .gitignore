@@ -38,3 +38,6 @@ Thumbs.db
 #readme files 
 *.md
 !README.md
+
+#other folder 
+*other
