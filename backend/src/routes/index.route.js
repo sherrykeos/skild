@@ -4,11 +4,15 @@ import { router as authRouter } from "../modules/auth/index.js";
 import skillRoutes from "../modules/skills/skill.routes.js";
 import marketplaceRoutes from "../modules/marketplace/marketplace.routes.js";
 import engagementRoutes from "../modules/engagement/engagement.routes.js";
+import userRoutes from "../modules/user/user.routes.js";
 
 const router = Router();
 
 //auth routes
 router.use("/auth", authRouter);
+
+//user routes
+router.use("/users", userRoutes);
 
 //skill routes
 router.use("/skills", skillRoutes);
