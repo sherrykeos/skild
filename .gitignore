@@ -39,5 +39,11 @@ Thumbs.db
 *.md
 !README.md
 
-#other folder 
-*other
+*.private
+
+#tests
+*.testsIgnore
+
+
+
+## im make the private github archieve for every project to store the project data that only useful for me then next task is to test the backend since the BE all module done and to try to start the frontend today, design first !!

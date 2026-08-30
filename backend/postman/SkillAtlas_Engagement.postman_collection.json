@@ -1,0 +1,417 @@
+{
+  "info": {
+    "_postman_id": "c1f7a8b9-4e5d-4f2a-8c9b-3e2f1a5b4c6d",
+    "name": "SkillAtlas - Engagement Module",
+    "description": "Postman collection for testing the SkillAtlas Engagement Module endpoints (Upvotes, Reviews, Saves, Collections, Downloads).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api",
+      "type": "string"
+    },
+    {
+      "key": "authToken",
+      "value": "YOUR_JWT_ACCESS_TOKEN",
+      "type": "string"
+    },
+    {
+      "key": "skillId",
+      "value": "YOUR_PUBLISHED_SKILL_ID",
+      "type": "string"
+    },
+    {
+      "key": "reviewId",
+      "value": "YOUR_REVIEW_ID",
+      "type": "string"
+    },
+    {
+      "key": "collectionId",
+      "value": "YOUR_COLLECTION_ID",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Upvotes",
+      "item": [
+        {
+          "name": "Upvote Skill",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/skills/{{skillId}}/upvote",
+              "host": ["{{baseUrl}}"],
+              "path": ["skills", "{{skillId}}", "upvote"]
+            },
+            "description": "Upvotes a published skill. Requires authentication."
+          }
+        },
+        {
+          "name": "Remove Upvote",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/skills/{{skillId}}/upvote",
+              "host": ["{{baseUrl}}"],
+              "path": ["skills", "{{skillId}}", "upvote"]
+            },
+            "description": "Removes user's upvote from a published skill."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reviews",
+      "item": [
+        {
+          "name": "Get Skill Reviews (Public)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/skills/{{skillId}}/reviews?page=1&limit=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["skills", "{{skillId}}", "reviews"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "20" }
+              ]
+            },
+            "description": "Gets paginated reviews for a published skill. Public endpoint."
+          }
+        },
+        {
+          "name": "Create Review",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"Great skill! Very useful for automation.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/skills/{{skillId}}/reviews",
+              "host": ["{{baseUrl}}"],
+              "path": ["skills", "{{skillId}}", "reviews"]
+            },
+            "description": "Creates a review for a published skill. Enforces 1 review per user per skill."
+          }
+        },
+        {
+          "name": "Update Review",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"Updated review content.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/reviews/{{reviewId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["reviews", "{{reviewId}}"]
+            },
+            "description": "Updates user's own review."
+          }
+        },
+        {
+          "name": "Delete Review",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/reviews/{{reviewId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["reviews", "{{reviewId}}"]
+            },
+            "description": "Deletes user's own review."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Saves",
+      "item": [
+        {
+          "name": "Save Skill",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/skills/{{skillId}}/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["skills", "{{skillId}}", "save"]
+            },
+            "description": "Saves a published skill for the authenticated user."
+          }
+        },
+        {
+          "name": "Unsave Skill",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/skills/{{skillId}}/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["skills", "{{skillId}}", "save"]
+            },
+            "description": "Removes a saved skill for the authenticated user."
+          }
+        },
+        {
+          "name": "Get User Saved Skills",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users/me/saved?page=1&limit=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "me", "saved"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "20" }
+              ]
+            },
+            "description": "Gets paginated list of saved published skills for authenticated user."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Collections",
+      "item": [
+        {
+          "name": "Get User Collections",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users/me/collections",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "me", "collections"]
+            },
+            "description": "Lists all collections owned by the authenticated user."
+          }
+        },
+        {
+          "name": "Create Collection",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"React Super Skills\",\n  \"description\": \"My favorite React tools and agents.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/me/collections",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "me", "collections"]
+            },
+            "description": "Creates a new skill collection for authenticated user."
+          }
+        },
+        {
+          "name": "Update Collection",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Collection Name\",\n  \"description\": \"Updated description.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/collections/{{collectionId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["collections", "{{collectionId}}"]
+            },
+            "description": "Updates name/description of user's own collection."
+          }
+        },
+        {
+          "name": "Delete Collection",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/collections/{{collectionId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["collections", "{{collectionId}}"]
+            },
+            "description": "Deletes user's own collection."
+          }
+        },
+        {
+          "name": "Add Skill to Collection",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/collections/{{collectionId}}/skills/{{skillId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["collections", "{{collectionId}}", "skills", "{{skillId}}"]
+            },
+            "description": "Adds a published skill to user's collection."
+          }
+        },
+        {
+          "name": "Remove Skill from Collection",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/collections/{{collectionId}}/skills/{{skillId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["collections", "{{collectionId}}", "skills", "{{skillId}}"]
+            },
+            "description": "Removes a skill from user's collection."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Downloads",
+      "item": [
+        {
+          "name": "Download Skill (Anonymous)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/skills/{{skillId}}/download",
+              "host": ["{{baseUrl}}"],
+              "path": ["skills", "{{skillId}}", "download"]
+            },
+            "description": "Downloads .zip archive of published skill files anonymously. Records Download row with userId = null."
+          }
+        },
+        {
+          "name": "Download Skill (Authenticated)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/skills/{{skillId}}/download",
+              "host": ["{{baseUrl}}"],
+              "path": ["skills", "{{skillId}}", "download"]
+            },
+            "description": "Downloads .zip archive of published skill files while authenticated. Records Download row with userId."
+          }
+        }
+      ]
+    }
+  ]
+}
