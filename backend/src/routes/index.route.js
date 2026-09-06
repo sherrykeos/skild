@@ -6,6 +6,7 @@ import marketplaceRoutes from "../modules/marketplace/marketplace.routes.js";
 import engagementRoutes from "../modules/engagement/engagement.routes.js";
 import userRoutes from "../modules/user/user.routes.js";
 import githubRoutes from "../modules/github/github.routes.js";
+import adminRoutes from "../modules/admin/admin.routes.js";
 
 const router = Router();
 
@@ -23,6 +24,9 @@ router.use("/skills", skillRoutes);
 
 //marketplace routes
 router.use("/marketplace", marketplaceRoutes);
+
+//admin routes
+router.use("/admin", adminRoutes);
 
 //engagement routes
 router.use("/", engagementRoutes);

@@ -11,6 +11,7 @@ import {
   FolderHeart,
   User,
   Settings,
+  ShieldCheck,
   BookOpen,
   HelpCircle,
   LogOut,
@@ -30,6 +31,7 @@ const ICONS: Record<string, React.ElementType> = {
   FolderHeart,
   User,
   Settings,
+  ShieldCheck,
   BookOpen,
   HelpCircle,
 };
@@ -40,6 +42,7 @@ export function DashboardSidebar() {
 
   const mainItems = [
     { title: "Dashboard", href: "/dashboard", iconName: "LayoutDashboard" },
+    { title: "Admin Console", href: "/admin", iconName: "ShieldCheck" },
     { title: "My Skills", href: "/skills", iconName: "Boxes" },
     { title: "Create Skill", href: "/skills/new", iconName: "PlusCircle" },
     { title: "Import from GitHub", href: "/github-import", iconName: "Github" },
