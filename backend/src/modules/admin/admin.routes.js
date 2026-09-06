@@ -1,12 +1,13 @@
 import { Router } from "express";
+import authenticate from "../auth/src/auth.middleware.js";
 import { getAdminStats } from "./admin.controller.js";
 
 const router = Router();
 
 /**
  * GET /api/admin/stats
- * Get overall website statistics, user metrics, and recent activity
+ * Protected admin telemetry endpoint
  */
-router.get("/stats", getAdminStats);
+router.get("/stats", authenticate, getAdminStats);
 
 export default router;

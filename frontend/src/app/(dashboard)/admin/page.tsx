@@ -24,18 +24,31 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { LoadingState } from "@/components/common/loading-state";
 import { ErrorState } from "@/components/common/error-state";
+import { useAuth } from "@/lib/auth/auth-context";
+import { useRouter } from "next/navigation";
 import { adminApi } from "@/lib/api/admin";
 import { formatNumber, formatDate, getInitials } from "@/lib/utils";
 
 export default function AdminDashboardPage() {
+  const router = useRouter();
+  const { isAuthenticated, isLoading: authLoading } = useAuth();
+
   const { data, isLoading, isError, refetch, isRefetching } = useQuery({
     queryKey: ["admin-stats"],
     queryFn: () => adminApi.getStats(),
+    enabled: isAuthenticated,
     staleTime: 1000 * 60, // 1 minute
   });
 
-  if (isLoading) {
-    return <LoadingState message="Loading administrative website analytics..." />;
+  if (authLoading || isLoading) {
+    return <LoadingState message="Authenticating & loading website analytics..." />;
+  }
+
+  if (!isAuthenticated) {
+    if (typeof window !== "undefined") {
+      router.push("/login?redirect=/admin");
+    }
+    return null;
   }
 
   if (isError || !data) {
