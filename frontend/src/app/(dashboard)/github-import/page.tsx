@@ -30,10 +30,13 @@ import {
 import { CATEGORIES } from "@/constants/categories";
 import { githubApi } from "@/lib/api/github";
 import { GitHubInspectResult, GitHubTreeItem } from "@/types/engagement";
+import { useAuth } from "@/lib/auth/auth-context";
 import { toast } from "sonner";
 
 export default function GitHubImportPage() {
   const router = useRouter();
+  const { isCreator, becomeCreator } = useAuth();
+  const [activatingCreator, setActivatingCreator] = useState(false);
 
   // Wizard Steps (1: Connect, 2: Select Files, 3: Configure, 4: Review)
   const [currentStep, setCurrentStep] = useState<1 | 2 | 3 | 4>(1);
@@ -165,6 +168,53 @@ export default function GitHubImportPage() {
   };
 
   const hasSkillMd = selectedFiles.includes("SKILL.md");
+
+  const handleActivateCreator = async () => {
+    try {
+      setActivatingCreator(true);
+      await becomeCreator();
+      toast.success("Creator access activated!");
+    } catch (err: any) {
+      toast.error(err?.message || "Failed to activate creator mode.");
+    } finally {
+      setActivatingCreator(false);
+    }
+  };
+
+  if (!isCreator) {
+    return (
+      <div className="mx-auto max-w-xl space-y-6 py-10">
+        <div className="rounded-xl border border-[#252D28] bg-[#0E1210] p-8 text-center shadow-xl">
+          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#30E87F]/30 bg-[#30E87F]/10 text-[#30E87F]">
+            <Sparkles className="h-7 w-7" />
+          </div>
+          <h1 className="text-xl font-bold text-[#F1F4EF]">
+            Creator Access Required
+          </h1>
+          <p className="mx-auto mt-2 max-w-md text-xs text-[#A9B1AA]">
+            Importing agent skills from GitHub requires Creator status. Activation is instant, free, and enables repository syncing.
+          </p>
+
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Button
+              onClick={handleActivateCreator}
+              disabled={activatingCreator}
+              className="w-full bg-[#30E87F] font-semibold text-[#080B0A] hover:bg-[#28C76D] sm:w-auto"
+            >
+              {activatingCreator ? "Activating..." : "Activate Creator Access (Instant)"}
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="w-full border-[#252D28] bg-transparent text-[#A9B1AA] hover:bg-[#141916] sm:w-auto"
+            >
+              <Link href="/dashboard">Back to Dashboard</Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">

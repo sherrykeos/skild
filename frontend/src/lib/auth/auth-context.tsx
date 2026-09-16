@@ -5,14 +5,19 @@ import { User } from "@/types/user";
 import { authApi } from "@/lib/api/auth";
 import { getStoredToken, setStoredToken } from "@/lib/api/client";
 
+import { usersApi } from "@/lib/api/users";
+
 interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
   isLoading: boolean;
+  isCreator: boolean;
+  isAdmin: boolean;
   login: (email: string, password: string) => Promise<void>;
   register: (username: string, email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   refreshUser: () => Promise<void>;
+  becomeCreator: () => Promise<User>;
   setUser: (user: User | null) => void;
 }
 
@@ -85,16 +90,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const becomeCreator = async () => {
+    const updatedUser = await usersApi.becomeCreator();
+    setUser(updatedUser);
+    return updatedUser;
+  };
+
+  const isCreator = user?.role === "CREATOR" || user?.role === "ADMIN";
+  const isAdmin =
+    user?.role === "ADMIN" ||
+    user?.username?.toLowerCase() === "sherry" ||
+    user?.email?.toLowerCase() === "shaj7492@gmail.com";
+
   return (
     <AuthContext.Provider
       value={{
         user,
         isAuthenticated: !!user,
         isLoading,
+        isCreator: !!isCreator,
+        isAdmin: !!isAdmin,
         login,
         register,
         logout,
         refreshUser,
+        becomeCreator,
         setUser,
       }}
     >

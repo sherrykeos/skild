@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search, Menu, X, PlusCircle, LayoutDashboard, Bookmark, Settings, LogOut, User as UserIcon } from "lucide-react";
+import { Search, Menu, X, PlusCircle, LayoutDashboard, Bookmark, Settings, LogOut, User as UserIcon, Sparkles, ShieldCheck } from "lucide-react";
 import { Logo } from "./logo";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -18,11 +18,13 @@ import { PUBLIC_NAV_ITEMS } from "@/constants/navigation";
 import { useAuth } from "@/lib/auth/auth-context";
 import { getInitials } from "@/lib/utils";
 import { SearchModal } from "@/components/common/search-modal";
+import { BecomeCreatorDialog } from "@/components/creator/become-creator-dialog";
 
 export function PublicNavbar() {
   const pathname = usePathname();
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated, isCreator, isAdmin, logout } = useAuth();
   const [searchOpen, setSearchOpen] = useState(false);
+  const [creatorDialogOpen, setCreatorDialogOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Keyboard shortcut listener for Cmd+K / Ctrl+K
@@ -82,12 +84,24 @@ export function PublicNavbar() {
             {/* User Auth Buttons or Menu */}
             {isAuthenticated && user ? (
               <div className="flex items-center gap-2">
-                <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex text-xs gap-1.5">
-                  <Link href="/skills/new">
-                    <PlusCircle className="h-3.5 w-3.5 text-[#CCD7C5]" />
-                    <span>Create</span>
-                  </Link>
-                </Button>
+                {isCreator ? (
+                  <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex text-xs gap-1.5 text-[#F1F4EF] hover:bg-[#141916]">
+                    <Link href="/skills/new">
+                      <PlusCircle className="h-3.5 w-3.5 text-[#30E87F]" />
+                      <span>Create</span>
+                    </Link>
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={() => setCreatorDialogOpen(true)}
+                    variant="ghost"
+                    size="sm"
+                    className="hidden sm:inline-flex text-xs gap-1.5 text-[#30E87F] hover:bg-[#30E87F]/10"
+                  >
+                    <Sparkles className="h-3.5 w-3.5" />
+                    <span>Become a Creator</span>
+                  </Button>
+                )}
 
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
@@ -100,7 +114,14 @@ export function PublicNavbar() {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-52">
                     <div className="px-2.5 py-2 border-b border-[#252D28]">
-                      <p className="text-xs font-semibold text-[#F1F4EF]">{user.username}</p>
+                      <div className="flex items-center justify-between">
+                        <p className="text-xs font-semibold text-[#F1F4EF]">{user.username}</p>
+                        {user.role && user.role !== "USER" && (
+                          <span className="rounded bg-[#30E87F]/10 px-1 py-0.2 text-[9px] font-semibold text-[#30E87F]">
+                            {user.role}
+                          </span>
+                        )}
+                      </div>
                       <p className="text-[11px] text-[#707A72] truncate">{user.email}</p>
                     </div>
                     <DropdownMenuItem asChild>
@@ -109,12 +130,30 @@ export function PublicNavbar() {
                         <span>Dashboard</span>
                       </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link href="/skills" className="gap-2">
-                        <PlusCircle className="h-4 w-4 text-[#9FB8B2]" />
-                        <span>My Skills</span>
-                      </Link>
-                    </DropdownMenuItem>
+
+                    {isAdmin && (
+                      <DropdownMenuItem asChild>
+                        <Link href="/admin" className="gap-2 text-[#30E87F]">
+                          <ShieldCheck className="h-4 w-4 text-[#30E87F]" />
+                          <span className="font-medium">Admin Console</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    )}
+
+                    {isCreator ? (
+                      <DropdownMenuItem asChild>
+                        <Link href="/skills" className="gap-2">
+                          <PlusCircle className="h-4 w-4 text-[#9FB8B2]" />
+                          <span>My Skills</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    ) : (
+                      <DropdownMenuItem onClick={() => setCreatorDialogOpen(true)} className="gap-2 text-[#30E87F]">
+                        <Sparkles className="h-4 w-4 text-[#30E87F]" />
+                        <span>Become a Creator</span>
+                      </DropdownMenuItem>
+                    )}
+
                     <DropdownMenuItem asChild>
                       <Link href="/saved" className="gap-2">
                         <Bookmark className="h-4 w-4 text-[#AAB8A3]" />
@@ -227,6 +266,7 @@ export function PublicNavbar() {
       </header>
 
       <SearchModal open={searchOpen} onOpenChange={setSearchOpen} />
+      <BecomeCreatorDialog open={creatorDialogOpen} onOpenChange={setCreatorDialogOpen} />
     </>
   );
 }

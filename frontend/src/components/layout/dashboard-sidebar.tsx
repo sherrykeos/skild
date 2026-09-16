@@ -15,6 +15,10 @@ import {
   BookOpen,
   HelpCircle,
   LogOut,
+  Sparkles,
+  Users,
+  MessageSquare,
+  FileCode,
 } from "lucide-react";
 import { GithubIcon } from "@/components/ui/icons";
 import { Logo } from "./logo";
@@ -34,22 +38,39 @@ const ICONS: Record<string, React.ElementType> = {
   ShieldCheck,
   BookOpen,
   HelpCircle,
+  Sparkles,
+  Users,
+  MessageSquare,
+  FileCode,
 };
 
 export function DashboardSidebar() {
   const pathname = usePathname();
-  const { user, logout } = useAuth();
+  const { user, isCreator, isAdmin, logout } = useAuth();
 
-  const mainItems = [
+  const userItems = [
     { title: "Dashboard", href: "/dashboard", iconName: "LayoutDashboard" },
-    { title: "Admin Console", href: "/admin", iconName: "ShieldCheck" },
-    { title: "My Skills", href: "/skills", iconName: "Boxes" },
-    { title: "Create Skill", href: "/skills/new", iconName: "PlusCircle" },
-    { title: "Import from GitHub", href: "/github-import", iconName: "Github" },
+    ...(!isCreator
+      ? [{ title: "Become a Creator", href: "/become-creator", iconName: "Sparkles", highlight: true }]
+      : []),
+    ...(isCreator
+      ? [
+          { title: "My Skills", href: "/skills", iconName: "Boxes" },
+          { title: "Create Skill", href: "/skills/new", iconName: "PlusCircle" },
+          { title: "Import from GitHub", href: "/github-import", iconName: "Github" },
+        ]
+      : []),
     { title: "Saved", href: "/saved", iconName: "Bookmark" },
     { title: "Collections", href: "/collections", iconName: "FolderHeart" },
     { title: "Profile", href: user?.username ? `/users/${user.username}` : "/settings/profile", iconName: "User" },
     { title: "Settings", href: "/settings", iconName: "Settings" },
+  ];
+
+  const adminItems = [
+    { title: "Admin Overview", href: "/admin", iconName: "ShieldCheck" },
+    { title: "Users Moderation", href: "/admin/users", iconName: "Users" },
+    { title: "Skills Moderation", href: "/admin/skills", iconName: "FileCode" },
+    { title: "Reviews Moderation", href: "/admin/reviews", iconName: "MessageSquare" },
   ];
 
   const footerItems = [
@@ -67,9 +88,9 @@ export function DashboardSidebar() {
       {/* Main Navigation */}
       <div className="flex-1 overflow-y-auto px-3 py-4 space-y-1">
         <div className="px-3 pb-2 text-[10px] font-mono uppercase tracking-wider text-[#707A72]">
-          Creator Studio
+          {isCreator ? "Creator Studio" : "Workspace"}
         </div>
-        {mainItems.map((item) => {
+        {userItems.map((item) => {
           const Icon = ICONS[item.iconName] || Boxes;
           const isActive = pathname === item.href || (item.href !== "/dashboard" && pathname.startsWith(item.href));
 
@@ -78,20 +99,58 @@ export function DashboardSidebar() {
               key={item.href}
               href={item.href}
               className={`flex items-center gap-3 px-3 py-2 rounded-[8px] text-xs font-medium transition-all ${
-                isActive
+                item.highlight
+                  ? "bg-[#30E87F]/10 text-[#30E87F] border border-[#30E87F]/30 hover:bg-[#30E87F]/20 font-semibold"
+                  : isActive
                   ? "bg-[#141916] text-[#CCD7C5] border border-[#252D28] shadow-sm font-semibold"
                   : "text-[#A9B1AA] hover:bg-[#141916]/60 hover:text-[#F1F4EF]"
               }`}
             >
               <Icon
                 className={`h-4 w-4 shrink-0 transition-colors ${
-                  isActive ? "text-[#CCD7C5]" : "text-[#707A72]"
+                  item.highlight
+                    ? "text-[#30E87F]"
+                    : isActive
+                    ? "text-[#CCD7C5]"
+                    : "text-[#707A72]"
                 }`}
               />
               <span>{item.title}</span>
             </Link>
           );
         })}
+
+        {/* Dedicated Admin Section */}
+        {isAdmin && (
+          <>
+            <div className="pt-6 px-3 pb-2 text-[10px] font-mono uppercase tracking-wider text-[#9FB8B2]/70">
+              Admin Console
+            </div>
+            {adminItems.map((item) => {
+              const Icon = ICONS[item.iconName] || ShieldCheck;
+              const isActive = pathname === item.href;
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`flex items-center gap-3 px-3 py-2 rounded-[8px] text-xs font-medium transition-all ${
+                    isActive
+                      ? "bg-[#1A2520] text-[#30E87F] border border-[#30E87F]/30 shadow-sm font-semibold"
+                      : "text-[#A9B1AA] hover:bg-[#141916]/60 hover:text-[#F1F4EF]"
+                  }`}
+                >
+                  <Icon
+                    className={`h-4 w-4 shrink-0 transition-colors ${
+                      isActive ? "text-[#30E87F]" : "text-[#707A72]"
+                    }`}
+                  />
+                  <span>{item.title}</span>
+                </Link>
+              );
+            })}
+          </>
+        )}
 
         <div className="pt-6 px-3 pb-2 text-[10px] font-mono uppercase tracking-wider text-[#707A72]">
           Resources
@@ -124,7 +183,14 @@ export function DashboardSidebar() {
                 <AvatarFallback className="text-[10px]">{getInitials(user.username)}</AvatarFallback>
               </Avatar>
               <div className="overflow-hidden text-left">
-                <p className="text-xs font-medium text-[#F1F4EF] truncate">{user.username}</p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs font-medium text-[#F1F4EF] truncate">{user.username}</p>
+                  {user.role && user.role !== "USER" && (
+                    <span className="rounded bg-[#30E87F]/10 px-1 py-0.2 text-[9px] font-semibold text-[#30E87F]">
+                      {user.role}
+                    </span>
+                  )}
+                </div>
                 <p className="text-[10px] text-[#707A72] truncate">{user.email}</p>
               </div>
             </div>

@@ -22,4 +22,11 @@ export const usersApi = {
       method: "GET",
     });
   },
+
+  becomeCreator: async () => {
+    const data = await apiClient<{ user: User }>("/users/me/become-creator", {
+      method: "POST",
+    });
+    return data?.user || (data as unknown as User);
+  },
 };

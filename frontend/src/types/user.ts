@@ -1,10 +1,13 @@
 export type AuthProvider = "LOCAL" | "GOOGLE";
+export type UserRole = "USER" | "CREATOR" | "ADMIN";
 
 export interface User {
   id: string;
   username: string;
   email: string;
   avatar?: string | null;
+  role?: UserRole;
+  isSuspended?: boolean;
   provider?: AuthProvider;
   isEmailVerified?: boolean;
   emailVerifiedAt?: string | null;
