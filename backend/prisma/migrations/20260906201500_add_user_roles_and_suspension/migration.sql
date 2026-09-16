@@ -1,0 +1,6 @@
+-- CreateEnum
+CREATE TYPE "UserRole" AS ENUM ('USER', 'CREATOR', 'ADMIN');
+
+-- AlterTable
+ALTER TABLE "User" ADD COLUMN "role" "UserRole" NOT NULL DEFAULT 'USER';
+ALTER TABLE "User" ADD COLUMN "isSuspended" BOOLEAN NOT NULL DEFAULT false;

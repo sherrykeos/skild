@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import authenticate from "../auth/src/auth.middleware.js";
-
+import { requireCreator } from "../../middlewares/auth.role.middleware.js";
 import validate from "../../middlewares/validate.js";
 
 import {
@@ -82,6 +82,7 @@ router.get(
 router.post(
     "/",
     authenticate,
+    requireCreator,
     validate(createSkillSchema),
     create,
 );
@@ -95,6 +96,7 @@ router.post(
 router.patch(
     "/:id",
     authenticate,
+    requireCreator,
     validate(skillIdSchema, "params"),
     validate(updateSkillSchema),
     update,
@@ -109,6 +111,7 @@ router.patch(
 router.post(
     "/:id/publish",
     authenticate,
+    requireCreator,
     validate(skillIdSchema, "params"),
     publish,
 );
@@ -122,6 +125,7 @@ router.post(
 router.post(
     "/:id/archive",
     authenticate,
+    requireCreator,
     validate(skillIdSchema, "params"),
     archive,
 );
@@ -135,6 +139,7 @@ router.post(
 router.post(
     "/:id/restore",
     authenticate,
+    requireCreator,
     validate(skillIdSchema, "params"),
     restore,
 );
@@ -148,6 +153,7 @@ router.post(
 router.delete(
     "/:id",
     authenticate,
+    requireCreator,
     validate(skillIdSchema, "params"),
     remove,
 );

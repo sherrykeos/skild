@@ -3,6 +3,7 @@ import {
   findUserById,
   findUserByUsername,
   updateUserProfile,
+  becomeCreatorUser,
   findPublishedSkillsByAuthor,
   countPublishedSkillsByAuthor,
 } from "./user.repository.js";
@@ -44,6 +45,20 @@ export async function getCurrentUserProfile(userId) {
   }
 
   return user;
+}
+
+/**
+ * Activate Creator access for the currently authenticated user.
+ */
+export async function becomeCreator(userId) {
+  const user = await getCurrentUserProfile(userId);
+
+  if (user.role === "ADMIN" || user.role === "CREATOR") {
+    return user;
+  }
+
+  const updatedUser = await becomeCreatorUser(userId);
+  return updatedUser;
 }
 
 /**

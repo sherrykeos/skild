@@ -1,5 +1,6 @@
 import { Router } from "express";
 import authenticate from "../../auth/src/auth.middleware.js";
+import { requireCreator } from "../../../middlewares/auth.role.middleware.js";
 import validate from "../../../middlewares/validate.js";
 import { verifyAccessToken } from "../../auth/services/jwt.service.js";
 import { findUserById } from "../../auth/src/auth.repository.js";
@@ -39,6 +40,7 @@ async function optionalAuthenticate(req, res, next) {
 router.post(
   "/",
   authenticate,
+  requireCreator,
   validate(versionParamsSchema, "params"),
   validate(createVersionSchema),
   createVersion
@@ -61,6 +63,7 @@ router.get(
 router.patch(
   "/:versionId",
   authenticate,
+  requireCreator,
   validate(versionParamsSchema, "params"),
   validate(updateVersionSchema),
   updateVersion
@@ -69,6 +72,7 @@ router.patch(
 router.delete(
   "/:versionId",
   authenticate,
+  requireCreator,
   validate(versionParamsSchema, "params"),
   deleteVersion
 );

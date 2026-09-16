@@ -12,6 +12,7 @@ import {
   getMe,
   updateMe,
   getPublicProfile,
+  becomeCreatorHandler,
 } from "./user.controller.js";
 
 const router = Router();
@@ -24,6 +25,16 @@ router.get(
   "/me",
   authenticate,
   getMe,
+);
+
+/**
+ * POST /api/users/me/become-creator
+ * Activate Creator access for the authenticated user.
+ */
+router.post(
+  "/me/become-creator",
+  authenticate,
+  becomeCreatorHandler,
 );
 
 /**

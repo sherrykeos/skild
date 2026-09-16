@@ -4,6 +4,7 @@ import {
   getCurrentUserProfile,
   updateCurrentUserProfile,
   getPublicUserProfile,
+  becomeCreator,
 } from "./user.service.js";
 
 /**
@@ -19,6 +20,23 @@ export const getMe = asyncHandler(async (req, res) => {
       200,
       { user },
       "Profile fetched successfully.",
+    ),
+  );
+});
+
+/**
+ * Activate Creator privileges for the current user.
+ *
+ * POST /api/users/me/become-creator
+ */
+export const becomeCreatorHandler = asyncHandler(async (req, res) => {
+  const user = await becomeCreator(req.user.id);
+
+  return res.status(200).json(
+    new ApiResponse(
+      200,
+      { user },
+      "Creator profile activated successfully.",
     ),
   );
 });

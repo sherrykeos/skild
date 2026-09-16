@@ -1,7 +1,7 @@
 import prisma from "../../lib/prisma.js";
 
 /**
- * Find user by ID returning only safe user fields.
+ * Find user by ID returning safe user fields including role and suspension status.
  */
 export async function findUserById(id) {
   return prisma.user.findUnique({
@@ -10,6 +10,8 @@ export async function findUserById(id) {
       id: true,
       username: true,
       avatar: true,
+      role: true,
+      isSuspended: true,
       createdAt: true,
       updatedAt: true,
     },
@@ -26,6 +28,7 @@ export async function findUserByUsername(username) {
       id: true,
       username: true,
       avatar: true,
+      role: true,
       createdAt: true,
     },
   });
@@ -46,6 +49,38 @@ export async function updateUserProfile(id, data) {
       id: true,
       username: true,
       avatar: true,
+      role: true,
+      isSuspended: true,
+      createdAt: true,
+      updatedAt: true,
+    },
+  });
+}
+
+/**
+ * Promote user to CREATOR if not already ADMIN.
+ */
+export async function becomeCreatorUser(userId) {
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { id: true, role: true, isSuspended: true },
+  });
+
+  if (!user) return null;
+
+  if (user.role === "ADMIN") {
+    return findUserById(userId);
+  }
+
+  return prisma.user.update({
+    where: { id: userId },
+    data: { role: "CREATOR" },
+    select: {
+      id: true,
+      username: true,
+      avatar: true,
+      role: true,
+      isSuspended: true,
       createdAt: true,
       updatedAt: true,
     },

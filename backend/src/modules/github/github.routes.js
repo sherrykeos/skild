@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import authenticate from "../auth/src/auth.middleware.js";
+import { requireCreator } from "../../middlewares/auth.role.middleware.js";
 import validate from "../../middlewares/validate.js";
 
 import {
@@ -24,6 +25,7 @@ const router = Router();
 router.post(
   "/inspect",
   authenticate,
+  requireCreator,
   validate(inspectRepositorySchema),
   inspect,
 );
@@ -35,6 +37,7 @@ router.post(
 router.get(
   "/tree",
   authenticate,
+  requireCreator,
   validate(repositoryTreeSchema, "query"),
   getRepositoryTree,
 );
@@ -46,6 +49,7 @@ router.get(
 router.post(
   "/import",
   authenticate,
+  requireCreator,
   validate(importRepositorySchema),
   importRepo,
 );

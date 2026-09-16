@@ -195,6 +195,8 @@ async function createUserSession(user, res) {
       username: user.username,
       email: user.email,
       avatar: user.avatar,
+      role: user.role,
+      isSuspended: user.isSuspended,
     },
   };
 }
@@ -221,6 +223,10 @@ async function login(data, res) {
 
   if (!isPasswordValid) {
     throw createError("Invalid email or password.", 401);
+  }
+
+  if (user.isSuspended) {
+    throw createError("Your account has been suspended by an administrator.", 403);
   }
 
   /* -------------------------------------------------------------------------- */
@@ -285,6 +291,8 @@ async function login(data, res) {
       username: user.username,
       email: user.email,
       avatar: user.avatar,
+      role: user.role,
+      isSuspended: user.isSuspended,
     },
   };
 }
@@ -522,6 +530,8 @@ async function getCurrentUser(userId) {
     username: user.username,
     email: user.email,
     avatar: user.avatar,
+    role: user.role,
+    isSuspended: user.isSuspended,
     provider: user.provider,
     isEmailVerified: user.isEmailVerified,
     createdAt: user.createdAt,

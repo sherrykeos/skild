@@ -25,6 +25,14 @@ async function authenticate(req, res, next) {
       });
     }
 
+    if (user.isSuspended) {
+      return res.status(403).json({
+        success: false,
+        code: "ACCOUNT_SUSPENDED",
+        message: "Your account has been suspended by an administrator.",
+      });
+    }
+
     req.user = user;
 
     next();
