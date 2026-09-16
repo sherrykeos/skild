@@ -3,7 +3,9 @@ import type { NextConfig } from "next";
 const backendUrl = process.env.BACKEND_INTERNAL_URL || "http://localhost:5000";
 
 const nextConfig: NextConfig = {
-  reactCompiler: true,
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
+  },
   async rewrites() {
     return [
       {

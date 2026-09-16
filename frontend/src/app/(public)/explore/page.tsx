@@ -61,6 +61,7 @@ function ExploreContent() {
         category: category || undefined,
         sort,
       }),
+    placeholderData: (previousData) => previousData,
   });
 
   const skills = data?.skills || [];
