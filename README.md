@@ -1,1 +1,1 @@
-skilatlas
+skilatlas - platform
